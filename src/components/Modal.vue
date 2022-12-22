@@ -1,9 +1,13 @@
 <template>
-  <div class="box" @click="$emit('close')" >
+  <div class="box" @click.prevent.capture="$emit('close')" >
     <div :class="theme==='sale' ? 'red' : 'box1'" 
           @click.prevent="$emit('open')">
         <h1 class="boxTitle">{{title}}</h1>
         <h3 class="boxContent">{{content}}</h3>
+        <slot></slot>
+        <div class="links">
+        <slot name="link" ></slot>
+        </div>
     </div>
   </div>
 </template>
@@ -50,7 +54,7 @@ export default {
 }
 .box1{
     width: 500px;
-    height: 250px;
+    height: 350px;
     border-radius: 25px;
     position: absolute;
     background-color: white;
@@ -66,6 +70,16 @@ export default {
 .boxContent{
     margin-top: 10%;
     font-size: 25px;
+}
+.links{
+  font-size: 20px;
+  background-color: lightskyblue;
+  width: 150px;
+  margin-left: 35%;
+  height: 35px;
+  border: solid 2px black;
+  border-radius: 30px;
+  padding: 8px;
 }
 
 </style>
