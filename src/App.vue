@@ -4,18 +4,25 @@
     <div class="focusBtn">
       <input type="text" ref="inputRef" />
       <button @click="mounted">Focus</button>
-      <button @click="this.showModel=true">Show Modal</button>
+      <button @click="this.showModel = true">Show Modal</button>
     </div>
-      <Modal
-        title="Signup for the Giveaway"
-        content="Grap your item for half prize"
-        theme="sales"
-        class="modal"
-        v-show="showModel"
-        @close="this.showModel=false"
-        @open="this.showModel=true"
-      >
-      </Modal>
+    <Modal
+      title="Signup for the Giveaway"
+      content="Grap your item for half prize"
+      theme="sales"
+      class="modal"
+      v-show="showModel"
+      @close="this.showModel = false"
+      @open="this.showModel = true"
+    >
+      <!--slot passing-->
+      <template v-slot:default>
+        <h2>Hello world</h2>
+      </template>
+      <template v-slot:link>
+        <a href="">Named slot</a>
+      </template>
+    </Modal>
   </div>
 </template>
 
@@ -25,8 +32,8 @@ export default {
   name: "App",
   data() {
     return {
-      showModel: false
-    }
+      showModel: false,
+    };
   },
   methods: {
     mounted() {
